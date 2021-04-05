@@ -1,39 +1,70 @@
 package com.kpi.Lab;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements InputFragment.OnFragmentSendDataListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button resultButton = (Button) findViewById(R.id.resultButton);
-        resultButton.setOnClickListener(new View.OnClickListener(){
+    }
+
+    @Override
+    public void onSendResult(String result) {
+        ResultFragment fragment = (ResultFragment) getSupportFragmentManager().findFragmentById(R.id.resultFragment);
+        if (fragment != null)
+            fragment.setSelectedItem(result);
+    }
+
+    /*
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        inputFragment = new InputFragment();
+        resultFragment = new ResultFragment();
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        fragmentTransaction.replace(R.id.inputFragment, inputFragment);
+        fragmentTransaction.replace(R.id.resultFragment, resultFragment);
+        fragmentTransaction.commit();
+
+        final Button button = (Button) findViewById(R.id.resultButton);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                TextView textView = findViewById(R.id.questionField);
-                RadioGroup radioGroup = findViewById(R.id.radioGroup);
-                if (textView.getText().toString().equals("")) {
-                    Toast.makeText(MainActivity.this, "Your question is empty!" ,
-                            Toast.LENGTH_LONG).show();
+            public void onClick(View v) {
+                String question = ((EditText) inputFragment.getView().findViewById(R.id.questionField))
+                        .getText().toString();
+                int answerId = ((RadioGroup) inputFragment.getView().findViewById(R.id.
+                        answerRadioGroup)).getCheckedRadioButtonId();
+
+                if(answerId != -1){
+                    String answer = ((RadioButton) inputFragment.getView().findViewById(answerId)).
+                            getText().toString();
+                    if (question.equals("")) {
+                        ((TextView) resultFragment.getView().findViewById(R.id.result))
+                                .setText("Your question is empty!");
+                    }
+                    else{
+                        String text = "Your answer for question: \n" + question + "\nIs "
+                                + answer;
+                        ((TextView) resultFragment.getView().findViewById(R.id.result))
+                                .setText(text);
+                    }
                 }
                 else{
-                    RadioButton selectedRadioButton  = (RadioButton)
-                            findViewById(radioGroup.getCheckedRadioButtonId());
-                    Toast.makeText(MainActivity.this, "Your answer for question: \n"
-                            + textView.getText().toString() + "\nIs "
-                            + selectedRadioButton.getText().toString(), Toast.LENGTH_LONG).show();
+                    ((TextView) resultFragment.getView().findViewById(R.id.result)).setText("Your"+
+                            " checkbox is empty!");
                 }
             }
-        });
-    }
+        });*/
 }
+
+

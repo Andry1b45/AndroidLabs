@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00401414"
+    tools:context=".ResultFragment">
+
+
+    <EditText
+        android:id="@+id/questionField"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:background="#FFFF"
+        android:ems="10"
+        android:hint="@string/Input_your_question_here"
+        android:inputType="text" />
+
+    <RadioGroup
+        android:id="@+id/answerRadioGroup"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="100dp">
+
+        <RadioButton
+            android:id="@+id/yesRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Yes" />
+
+        <RadioButton
+            android:id="@+id/noRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/resultButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="200dp"
+        android:text="Ok" />
+</FrameLayout>
